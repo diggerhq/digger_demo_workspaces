@@ -1,11 +1,11 @@
 projects:
 - name: dev
   branch: /main/
-  dir: /
+  dir: ./
   workspace: dev
   terraform_version: v0.11.0
 - name: prod
   branch: /main/
-  dir: /
+  dir: ./
   workspace: prod
   terraform_version: v0.11.0
