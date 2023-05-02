@@ -2,10 +2,6 @@
 resource "null_resource" "test" {
 }
 
-
-resource "null_resource" "test2" {
-}
-
 resource "null_resource" "devonly" {
   count = "${terraform.workspace == "dev" ? 1 : 0}"
 }
