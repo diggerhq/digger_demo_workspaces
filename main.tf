@@ -1,5 +1,4 @@
 module "digger_test" {
-  # version = "~> 5.0"
   source  = "./modules/terraform-aws-s3"
 
   count = terraform.workspace == "dev" ? 1 : 0
