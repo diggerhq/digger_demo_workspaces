@@ -1,0 +1,38 @@
+{
+  "name": "terraform-aws-s3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "doc"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^7.3.2",
+    "@semantic-release/changelog": "^3.0.2",
+    "@commitlint/config-conventional": "^7.5.0",
+    "@semantic-release/commit-analyzer": "^6.1.0",
+    "@semantic-release/exec": "^3.3.2",
+    "@semantic-release/github": "^5.2.9",
+    "@semantic-release/release-notes-generator": "^7.1.4",
+    "cz-conventional-changelog": "^2.1.0",
+    "semantic-release": "^15.13.3"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RedVentures/terraform-aws-s3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RedVentures/terraform-aws-s3/issues"
+  },
+  "homepage": "https://github.com/RedVentures/terraform-aws-s3#readme",
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
