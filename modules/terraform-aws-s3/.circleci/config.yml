@@ -1,0 +1,34 @@
+# Golang CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-go/ for more details
+version: 2
+jobs:
+  release:
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: npm install
+      - run:
+          name: Push to docs or semantic-release
+          command: |
+            echo $PWD
+            ls
+            docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD $DOCKER_REGISTRY
+            CHANGES=$(git diff-tree --no-commit-id --name-only -r HEAD)
+            echo $CHANGES
+            if [ $CHANGES == "README.md" ]; then 
+              docker run --rm -it -e CIRCLE_PROJECT_REPONAME -e GITHUB_TOKEN -e STAGE=docs -e FILE_PATH=content/docs/modules/resources -v $PWD/:/opt/app/currentGit  $DOCKER_REGISTRY/terraform-update-docs
+            else
+              npx semantic-release
+            fi
+workflows:
+  version: 2
+  release:
+    jobs:
+      - release:
+          context: docker-push
+          filters:
+            branches:
+              only: master

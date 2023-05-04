@@ -1,15 +1,23 @@
+module "digger_test" {
+  # version = "~> 5.0"
+  source  = "./modules/terraform-aws-s3"
 
-resource "null_resource" "test" {
-}
+  count = terraform.workspace == "dev" ? 1 : 0
 
+  name           = "digger-test"
+  environment    = terraform.workspace
+  project        = "digger-test"
+  partner        = "platform"
+  owner          = "falcantara@redventures.com"
+  classification = "Internal"
 
-resource "null_resource" "test2" {
-}
+  sse_algorithm = "AES256"
 
-resource "null_resource" "devonly" {
-  count = "${terraform.workspace == "dev" ? 1 : 0}"
-}
-
-resource "null_resource" "prodonly" {
-  count = "${terraform.workspace == "prod" ? 1 : 0}"
+  tags = {
+    ServiceNowAppID = "N/A" 
+    Name            = "redspine-shared-s3"
+    Project         = "digger-test"
+    Application     = "digger-test"
+    Environment     = terraform.workspace
+  }
 }
