@@ -1,10 +1,10 @@
-module "redspine_shared_s3" {
+module "digger_test" {
   version = "~> 5.0"
-  source  = "app.terraform.io/RVStandard/s3/aws"
+  source  = "github.com/RedVentures/terraform-aws-s3"
 
   count = terraform.workspace == "dev" ? 1 : 0
 
-  name           = "redspine-shared-s3"
+  name           = "digger-test"
   environment    = terraform.workspace
   project        = "digger-test"
   partner        = "platform"
